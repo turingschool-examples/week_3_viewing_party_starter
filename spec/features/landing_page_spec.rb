@@ -8,7 +8,7 @@ RSpec.describe 'Landing Page' do
     end 
 
     it 'has a header' do
-        expect(page).to have_content('Viewing Party (even more) Lite')
+        expect(page).to have_content('Viewing Party Lite')
     end
 
     it 'has links/buttons that link to correct pages' do 

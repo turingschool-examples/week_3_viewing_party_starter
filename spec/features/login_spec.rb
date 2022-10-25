@@ -32,4 +32,27 @@ RSpec.describe "User Log In" do
     expect(page).to have_content("Bad Credentials, try again.")
     
   end
+
+  it 'also has functionality to log out' do 
+    user = User.create(name: 'User One', email: 'email@example.com', password: 'password123')
+
+    visit "/"
+
+    click_link "Log In"
+
+    fill_in :email, with:'email@example.com'
+    fill_in :password, with: 'password123'
+    click_button 'Log In'
+
+    expect(page).to_not have_link("Log In")
+    expect(page).to_not have_button("Create New User")
+    expect(page).to have_link("Log Out")
+
+    click_link "Log Out"
+
+    expect(current_path).to eq('/')
+    expect(page).to have_link("Log In")
+    expect(page).to have_button("Create New User")
+    expect(page).to_not have_link("Log Out")
+  end 
 end

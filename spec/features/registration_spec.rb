@@ -7,7 +7,7 @@ RSpec.describe "User Registration" do
     fill_in :user_name, with: 'User One'
     fill_in :user_email, with:'user1@example.com'
     fill_in :user_password, with: 'password123'
-    click_button 'Create New User'
+    click_button 'Create User'
 
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("User One's Dashboard")
@@ -20,7 +20,7 @@ RSpec.describe "User Registration" do
     
     fill_in :user_name, with: 'User Two'
     fill_in :user_email, with:'notunique@example.com'
-    click_button 'Create New User'
+    click_button 'Create User'
 
     expect(current_path).to eq(register_path)
     expect(page).to have_content("Email has already been taken")

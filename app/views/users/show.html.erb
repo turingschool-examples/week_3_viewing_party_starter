@@ -1,6 +1,4 @@
-<% if @user %>
-<h2><%= @user.name %>'s Dashboard</h2>
-<% end %>
+<h2><%= @current_user.name %>'s Dashboard</h2>
 
 <%= button_to "Find Top Rated Movies", movies_path, method: :get %><br>
 

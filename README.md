@@ -1,6 +1,6 @@
 # Viewing Party Lite - Week 3 Version
 
-This repo can be used by any students during BE week 3.
+This repo can be used by any students for the authorization challenge
 
 ## Set Up
 

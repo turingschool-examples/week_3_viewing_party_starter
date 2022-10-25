@@ -11,11 +11,11 @@ RSpec.describe 'Movies Index Page' do
     end 
 
     it 'shows all movies' do 
-        visit "users/#{@user1.id}"
+        visit "/dashboard"
 
         click_button "Find Top Rated Movies"
 
-        expect(current_path).to eq("/users/#{@user1.id}/movies")
+        expect(current_path).to eq("/movies")
 
         expect(page).to have_content("Top Rated Movies")
         Movie.all.each do |movie|

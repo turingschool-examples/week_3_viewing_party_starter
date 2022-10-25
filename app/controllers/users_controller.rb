@@ -4,13 +4,16 @@ class UsersController <ApplicationController
     end 
 
     def show 
-        @user = User.find(params[:id])
+        if session[:user_id] 
+            @user = User.find(session[:user_id])
+        end
     end 
 
     def create 
         user = User.create(user_params)
         if user.save
-            redirect_to user_path(user)
+            session[:user_id] = user.id
+            redirect_to dashboard_path
         else  
             flash[:error] = user.errors.full_messages.to_sentence
             redirect_to register_path
@@ -24,7 +27,8 @@ class UsersController <ApplicationController
     def login_user
         user = User.find_by(email: params[:email])
         if user && user.authenticate(params[:password])
-            redirect_to "/users/#{user.id}"
+            session[:user_id] = user.id
+            redirect_to "/dashboard"
         else 
             flash[:error] = "Bad Credentials, try again."
             redirect_to "/login" 
